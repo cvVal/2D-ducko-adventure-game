@@ -28,7 +28,6 @@ public class PlayerController : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
 
         currentHealth = maxHealth;
-        Debug.Log("Current Health: " + currentHealth);
     }
 
     // Update is called once per frame
@@ -65,6 +64,6 @@ public class PlayerController : MonoBehaviour
 
         }
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
-        Debug.Log(currentHealth + "/" + maxHealth);
+        UIManager.Instance.SetHealthValue(currentHealth / (float)maxHealth);
     }
 }
