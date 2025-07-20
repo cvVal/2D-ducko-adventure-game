@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2840317692324968559}
   - component: {fileID: 3555402560526617299}
   - component: {fileID: 7782265737975807643}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BoilerEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -172,5 +172,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  isVertical: 1
+  isVertical: 0
   changeTime: 3
+  enableRandomAxisChange: 0
+  axisChangeChance: 0.7
+  minAxisChangeTime: 2
+  maxAxisChangeTime: 8
+  environmentLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  collisionCheckDistance: 0.6

@@ -25,6 +25,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 657106804404174237, guid: a9fd0d48d790b49fcbd4d000d63efa8a,
         type: 3}
+      propertyPath: m_SortingOrder
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 657106804404174237, guid: a9fd0d48d790b49fcbd4d000d63efa8a,
+        type: 3}
       propertyPath: m_SpriteTileMode
       value: 1
       objectReference: {fileID: 0}
@@ -77,6 +82,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5376705076246349373, guid: a9fd0d48d790b49fcbd4d000d63efa8a,
+        type: 3}
+      propertyPath: m_AutoTiling
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5376705076246349373, guid: a9fd0d48d790b49fcbd4d000d63efa8a,
         type: 3}
