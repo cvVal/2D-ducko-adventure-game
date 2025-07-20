@@ -23529,6 +23529,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3421476334712734348, guid: 63fe6c4ea845f45749672d2026bbd88b,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 5d27fb83db7034124901587e24b2dafb, type: 2}
     - target: {fileID: 6033579152241810228, guid: 63fe6c4ea845f45749672d2026bbd88b,
         type: 3}
       propertyPath: m_Name
@@ -23692,9 +23697,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: RobotEnemy
       objectReference: {fileID: 0}
-    - target: {fileID: 1928690337969631, guid: 45a3b9d07281340e09c6f607a2461684, type: 3}
-      propertyPath: m_Layer
-      value: 7
+    - target: {fileID: 541070393128799918, guid: 45a3b9d07281340e09c6f607a2461684,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2.560498
+      objectReference: {fileID: 0}
+    - target: {fileID: 541070393128799918, guid: 45a3b9d07281340e09c6f607a2461684,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 2.5579998
       objectReference: {fileID: 0}
     - target: {fileID: 2113510331869456366, guid: 45a3b9d07281340e09c6f607a2461684,
         type: 3}
@@ -23745,11 +23756,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9110552391994873724, guid: 45a3b9d07281340e09c6f607a2461684,
-        type: 3}
-      propertyPath: environmentLayers.m_Bits
-      value: 64
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

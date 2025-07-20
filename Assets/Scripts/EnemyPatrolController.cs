@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyPatrolController : MonoBehaviour
 {
+    private Animator animator;
+
     public float speed = 2.0f;
     public bool isVertical; // If true, patrols vertically; otherwise, horizontally
     public float changeTime = 3.0f;
@@ -29,6 +31,7 @@ public class EnemyPatrolController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody2D>();
         timer = changeTime;
         
@@ -74,14 +77,18 @@ public class EnemyPatrolController : MonoBehaviour
         // Check for collision ahead before moving
         Vector2 currentPosition = rigidbody.position;
         Vector2 moveDirection = Vector2.zero;
-        
+
         if (isVertical)
         {
             moveDirection = Vector2.up * direction;
+            animator.SetFloat("MoveX", 0);
+            animator.SetFloat("MoveY", direction);
         }
         else
         {
             moveDirection = Vector2.right * direction;
+            animator.SetFloat("MoveX", direction);
+            animator.SetFloat("MoveY", 0);
         }
         
         // Use a slightly offset start position to avoid self-collision

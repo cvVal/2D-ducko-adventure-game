@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2840317692324968559}
   - component: {fileID: 3555402560526617299}
   - component: {fileID: 7782265737975807643}
+  - component: {fileID: 8458432972545518723}
   m_Layer: 7
   m_Name: BoilerEnemy
   m_TagString: Untagged
@@ -182,3 +183,24 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   collisionCheckDistance: 0.6
+--- !u!95 &8458432972545518723
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147121572362474657}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5d27fb83db7034124901587e24b2dafb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
