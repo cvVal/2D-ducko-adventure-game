@@ -4,19 +4,49 @@ using UnityEngine;
 
 public class ShootProjectile : MonoBehaviour
 {
+    [Header("Projectile Settings")]
+    public float maxDistanceFromPlayer = 10.0f; // Maximum distance before destruction
+    
     private new Rigidbody2D rigidbody;
+    private Transform playerTransform;
+    
     // Start is called before the first frame update
     void Awake()
     {
         rigidbody = GetComponent<Rigidbody2D>();
+        
+        // Find the player in the scene
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            playerTransform = player.transform;
+        }
+        else
+        {
+            Debug.LogWarning("Player not found! Make sure player has 'Player' tag.");
+        }
     }
 
     void Update()
     {
-        if (transform.position.magnitude > 50.0f)
+        // Check if player reference exists before calculating distance
+        if (playerTransform != null)
         {
-            Destroy(gameObject); // Destroy the projectile if it goes too far
-        }  
+            float distanceFromPlayer = Vector3.Distance(transform.position, playerTransform.position);
+            
+            if (distanceFromPlayer > maxDistanceFromPlayer)
+            {
+                Destroy(gameObject); // Destroy the projectile if it's too far from player
+            }
+        }
+        else
+        {
+            // Fallback: destroy after a certain time if no player reference
+            if (transform.position.magnitude > 100.0f)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 
     // Update is called once per frame
