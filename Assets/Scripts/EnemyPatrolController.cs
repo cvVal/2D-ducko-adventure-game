@@ -135,5 +135,6 @@ public class EnemyPatrolController : MonoBehaviour
     {
         isBroken = false;
         rigidbody.simulated = false;
+        animator.SetTrigger("Fixed");
     }
 }
