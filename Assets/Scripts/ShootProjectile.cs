@@ -11,6 +11,14 @@ public class ShootProjectile : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
     }
 
+    void Update()
+    {
+        if (transform.position.magnitude > 50.0f)
+        {
+            Destroy(gameObject); // Destroy the projectile if it goes too far
+        }  
+    }
+
     // Update is called once per frame
     public void Launch(Vector2 direction, float force)
     {
@@ -19,6 +27,20 @@ public class ShootProjectile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        EnemyPatrolController enemy = other.GetComponent<EnemyPatrolController>();
+        if (enemy != null && enemy.CompareTag("Fixable"))
+        {
+            enemy.FixEnemy(); // Call the method to fix the enemy
+        }
+        else if (enemy != null && enemy.CompareTag("Enemy"))
+        {
+            Destroy(enemy.gameObject);
+        }
         Destroy(gameObject); // Destroy the projectile on collision
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        Destroy(gameObject); // Destroy the projectile on collision with any object      
     }
 }

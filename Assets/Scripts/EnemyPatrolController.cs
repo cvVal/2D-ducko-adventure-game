@@ -9,18 +9,18 @@ public class EnemyPatrolController : MonoBehaviour
     public float speed = 2.0f;
     public bool isVertical; // If true, patrols vertically; otherwise, horizontally
     public float changeTime = 3.0f;
-    
+
     [Header("Random Axis Change Settings")]
     public bool enableRandomAxisChange = false;
     [Range(0f, 1f)]
     public float axisChangeChance = 0.3f; // 30% chance to change axis
     public float minAxisChangeTime = 2.0f;
     public float maxAxisChangeTime = 8.0f;
-    
+
     [Header("Collision Detection")]
     public LayerMask environmentLayers = -1; // What layers count as environment
     public float collisionCheckDistance = 0.6f; // How far ahead to check for collisions
-    
+
     private float timer;
     private float axisChangeTimer;
     private int direction = 1; // 1 for forward, -1 for backward
@@ -28,13 +28,15 @@ public class EnemyPatrolController : MonoBehaviour
     private new Rigidbody2D rigidbody;
     private Vector2 moveDirection;
 
+    bool isBroken = true; // Flag to indicate if the enemy is broken
+
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody2D>();
         timer = changeTime;
-        
+
         // Initialize random axis change timer if enabled
         if (enableRandomAxisChange)
         {
@@ -52,7 +54,7 @@ public class EnemyPatrolController : MonoBehaviour
             direction = -direction;
             timer = changeTime;
         }
-        
+
         // Handle random axis change if enabled
         if (enableRandomAxisChange)
         {
@@ -65,7 +67,7 @@ public class EnemyPatrolController : MonoBehaviour
                     isVertical = !isVertical;
                     Debug.Log($"Enemy changed axis to: {(isVertical ? "Vertical" : "Horizontal")}");
                 }
-                
+
                 // Reset the axis change timer
                 axisChangeTimer = Random.Range(minAxisChangeTime, maxAxisChangeTime);
             }
@@ -74,6 +76,8 @@ public class EnemyPatrolController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!isBroken) return; // If the enemy is not broken, do not move
+
         // Check for collision ahead before moving
         Vector2 currentPosition = rigidbody.position;
         Vector2 moveDirection = Vector2.zero;
@@ -90,20 +94,20 @@ public class EnemyPatrolController : MonoBehaviour
             animator.SetFloat("MoveX", direction);
             animator.SetFloat("MoveY", 0);
         }
-        
+
         // Use a slightly offset start position to avoid self-collision
         Vector2 rayStart = currentPosition + moveDirection * 0.1f;
-        
+
         // Raycast to check for collision (exclude self)
         RaycastHit2D hit = Physics2D.Raycast(rayStart, moveDirection, collisionCheckDistance - 0.1f, environmentLayers);
-        
+
         // Make sure we didn't hit ourselves
         if (hit.collider != null && hit.collider.gameObject != gameObject)
         {
             // Hit something! Change direction immediately
             direction = -direction;
             Debug.Log($"Enemy hit {hit.collider.name}, changing direction!");
-            
+
             // Optional: Also change axis if random axis change is enabled
             if (enableRandomAxisChange && Random.Range(0f, 1f) <= 0.5f) // 50% chance on collision
             {
@@ -125,5 +129,11 @@ public class EnemyPatrolController : MonoBehaviour
         {
             player.ChangeHealth(-1);
         }
+    }
+
+    public void FixEnemy()
+    {
+        isBroken = false;
+        rigidbody.simulated = false;
     }
 }

@@ -64,9 +64,9 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            Launch(); // Launch a projectile when C is pressed
+            Launch(); // Launch a projectile when Space is pressed
         }
     }
 
