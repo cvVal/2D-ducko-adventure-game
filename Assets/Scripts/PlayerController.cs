@@ -53,6 +53,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Don't process input if game is paused
+        if (PauseManager.IsGamePaused())
+            return;
+            
         move = MoveAction.ReadValue<Vector2>();
 
         if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
@@ -87,6 +91,10 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        // Don't move if game is paused
+        if (PauseManager.IsGamePaused())
+            return;
+            
         Vector2 position = (Vector2)rigidbody.position + speed * Time.fixedDeltaTime * move;
         rigidbody.MovePosition(position);
     }

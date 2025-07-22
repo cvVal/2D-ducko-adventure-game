@@ -8,9 +8,10 @@
         </ui:VisualElement>
         <ui:VisualElement name="ControlsPanel" style="align-items: center; display: none;">
             <ui:Label text="Controls" name="ControlsTitle" style="font-size: 36px; margin-bottom: 30px; color: rgb(255, 255, 255); -unity-font-style: bold;" />
-            <ui:Label text="Arrow Keys - Move around" style="margin-bottom: 10px; color: rgb(244, 228, 193); font-size: 25px;" />
+            <ui:Label text="Arrow Keys or WASD - Move around" style="margin-bottom: 10px; color: rgb(244, 228, 193); font-size: 25px;" />
             <ui:Label text="X - Talk to NPCs" style="margin-bottom: 10px; color: rgb(244, 228, 193); font-size: 25px;" />
-            <ui:Label text="Space - Shoot projectiles" style="margin-bottom: 30px; color: rgb(244, 228, 193); font-size: 25px;" />
+            <ui:Label text="Space - Shoot projectiles" style="margin-bottom: 10px; color: rgb(244, 228, 193); font-size: 25px;" />
+            <ui:Label text="ESC - Pause game" style="margin-bottom: 30px; color: rgb(244, 228, 193); font-size: 25px;" />
             <ui:Button text="Back" name="BackButton" style="width: 200px; height: 50px; background-color: rgb(244, 228, 193); color: rgb(45, 24, 16); border-width: 2px; border-color: rgb(255, 255, 255); border-radius: 8px;" />
         </ui:VisualElement>
     </ui:VisualElement>

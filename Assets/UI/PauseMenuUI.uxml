@@ -1,0 +1,23 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="PauseContainer" style="justify-content: center; align-items: center; flex-grow: 1; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); display: none;">
+        <ui:VisualElement name="PausePanel" style="align-items: center; background-color: rgb(173, 88, 29); padding: 40px; border-radius: 15px; border-width: 3px; border-color: rgb(255, 255, 255);">
+            <ui:Label text="Game Paused" name="PauseTitle" style="font-size: 36px; margin-bottom: 30px; color: rgb(255, 255, 255); -unity-font-style: bold;" />
+            
+            <ui:Button text="Resume" name="ResumeButton" style="width: 200px; height: 50px; margin-bottom: 15px; background-color: rgb(244, 228, 193); color: rgb(45, 24, 16); border-width: 2px; border-color: rgb(255, 255, 255); border-radius: 8px;" />
+            <ui:Button text="Controls" name="PauseControlsButton" style="width: 200px; height: 50px; margin-bottom: 15px; background-color: rgb(244, 228, 193); color: rgb(45, 24, 16); border-width: 2px; border-color: rgb(255, 255, 255); border-radius: 8px;" />
+            <ui:Button text="Return to Main Menu" name="MainMenuButton" style="width: 200px; height: 50px; background-color: rgb(244, 228, 193); color: rgb(45, 24, 16); border-width: 2px; border-color: rgb(255, 255, 255); border-radius: 8px;" />
+        </ui:VisualElement>
+        
+        <!-- Controls Panel for Pause Menu -->
+        <ui:VisualElement name="PauseControlsPanel" style="align-items: center; background-color: rgb(173, 88, 29); padding: 40px; border-radius: 15px; border-width: 3px; border-color: rgb(255, 255, 255); display: none;">
+            <ui:Label text="Controls" name="PauseControlsTitle" style="font-size: 36px; margin-bottom: 30px; color: rgb(255, 255, 255); -unity-font-style: bold;" />
+            
+            <ui:Label text="Arrow Keys or WASD - Move around" style="margin-bottom: 10px; color: rgb(244, 228, 193); font-size: 16px;" />
+            <ui:Label text="X - Talk to NPCs" style="margin-bottom: 10px; color: rgb(244, 228, 193); font-size: 16px;" />
+            <ui:Label text="Space - Shoot projectiles" style="margin-bottom: 10px; color: rgb(244, 228, 193); font-size: 16px;" />
+            <ui:Label text="ESC - Pause game" style="margin-bottom: 30px; color: rgb(244, 228, 193); font-size: 16px;" />
+            
+            <ui:Button text="Back" name="PauseControlsBackButton" style="width: 200px; height: 50px; background-color: rgb(244, 228, 193); color: rgb(45, 24, 16); border-width: 2px; border-color: rgb(255, 255, 255); border-radius: 8px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

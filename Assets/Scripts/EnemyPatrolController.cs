@@ -52,6 +52,10 @@ public class EnemyPatrolController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Don't update timers if game is paused
+        if (PauseManager.IsGamePaused())
+            return;
+            
         // Handle direction change timer
         timer -= Time.deltaTime;
         if (timer < 0)
@@ -81,6 +85,10 @@ public class EnemyPatrolController : MonoBehaviour
 
     void FixedUpdate()
     {
+        // Don't move if game is paused
+        if (PauseManager.IsGamePaused())
+            return;
+            
         if (!isBroken) return; // If the enemy is not broken, do not move
 
         // Check for collision ahead before moving
