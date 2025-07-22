@@ -29,11 +29,15 @@ public class EnemyPatrolController : MonoBehaviour
 
     bool isBroken = true; // Flag to indicate if the enemy is broken
 
+    private AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
+
         timer = changeTime;
 
         // Initialize random axis change timer if enabled
@@ -140,5 +144,6 @@ public class EnemyPatrolController : MonoBehaviour
         isBroken = false;
         rigidbody.simulated = false;
         animator.SetTrigger("Fixed");
+        audioSource.Stop();
     }
 }

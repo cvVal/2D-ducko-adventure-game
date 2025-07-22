@@ -9,14 +9,18 @@ public class ShootProjectile : MonoBehaviour
     
     private new Rigidbody2D rigidbody;
     private Transform playerTransform;
+
+    private PlayerController player;
+    private AudioSource audioSource;
     
     // Start is called before the first frame update
     void Awake()
     {
         rigidbody = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
         
         // Find the player in the scene
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         if (player != null)
         {
             playerTransform = player.transform;
@@ -52,6 +56,7 @@ public class ShootProjectile : MonoBehaviour
     // Update is called once per frame
     public void Launch(Vector2 direction, float force)
     {
+        player.PlaySound(audioSource.clip); // Play the projectile sound
         rigidbody.AddForce(direction * force);
     }
 

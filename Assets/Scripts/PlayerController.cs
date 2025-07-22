@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private Vector2 moveDirection = new(1, 0);
 
+    // NPC interaction
+    public InputAction TalkAction;
+
     // Player movement
     public InputAction MoveAction;
     public float speed = 3.0f;
@@ -29,8 +32,9 @@ public class PlayerController : MonoBehaviour
     public GameObject projectilePrefab;
     public float projectileSpeed = 300f;
 
-    // NPC interaction
-    public InputAction TalkAction;
+    // Audio
+    private AudioSource audioSource;
+    public AudioClip damageClip; // Sound to play when player takes damage
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +44,8 @@ public class PlayerController : MonoBehaviour
         MoveAction.Enable();
         TalkAction.Enable();
         rigidbody = GetComponent<Rigidbody2D>();
+
+        audioSource = GetComponent<AudioSource>();
 
         currentHealth = maxHealth;
     }
@@ -93,6 +99,8 @@ public class PlayerController : MonoBehaviour
             {
                 return; // Ignore damage if invincible
             }
+            // Only play sound when actually taking damage
+            PlaySound(damageClip);
             isInvincible = true;
             damageCooldown = timeInvincible;
             animator.SetTrigger("Hit");
@@ -130,5 +138,10 @@ public class PlayerController : MonoBehaviour
                 Debug.LogWarning("Hit object doesn't have NPC component!");
             }
         }
+    }
+
+    public void PlaySound(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
     }
 }
