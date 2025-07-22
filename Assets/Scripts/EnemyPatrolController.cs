@@ -31,6 +31,8 @@ public class EnemyPatrolController : MonoBehaviour
 
     private AudioSource audioSource;
 
+    public ParticleSystem smokeEffect; // Particle effect for when the enemy is broken
+
     // Start is called before the first frame update
     void Start()
     {
@@ -145,5 +147,6 @@ public class EnemyPatrolController : MonoBehaviour
         rigidbody.simulated = false;
         animator.SetTrigger("Fixed");
         audioSource.Stop();
+        smokeEffect.Stop();
     }
 }

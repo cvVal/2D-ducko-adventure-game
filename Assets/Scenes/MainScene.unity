@@ -24917,6 +24917,16 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 5d27fb83db7034124901587e24b2dafb, type: 2}
+    - target: {fileID: 3481521996598391054, guid: 63fe6c4ea845f45749672d2026bbd88b,
+        type: 3}
+      propertyPath: maxAxisChangeTime
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3481521996598391054, guid: 63fe6c4ea845f45749672d2026bbd88b,
+        type: 3}
+      propertyPath: minAxisChangeTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6033579152241810228, guid: 63fe6c4ea845f45749672d2026bbd88b,
         type: 3}
       propertyPath: m_Name
