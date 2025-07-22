@@ -29,12 +29,16 @@ public class PlayerController : MonoBehaviour
     public GameObject projectilePrefab;
     public float projectileSpeed = 300f;
 
+    // NPC interaction
+    public InputAction TalkAction;
+
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
 
         MoveAction.Enable();
+        TalkAction.Enable();
         rigidbody = GetComponent<Rigidbody2D>();
 
         currentHealth = maxHealth;
@@ -68,6 +72,11 @@ public class PlayerController : MonoBehaviour
         {
             Launch(); // Launch a projectile when Space is pressed
         }
+
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            FindFriend(); // Check for nearby NPCs when X is pressed
+        }
     }
 
     void FixedUpdate()
@@ -98,5 +107,28 @@ public class PlayerController : MonoBehaviour
         ShootProjectile projectile = projectileObject.GetComponent<ShootProjectile>();
         projectile.Launch(moveDirection, projectileSpeed);
         animator.SetTrigger("Launch");
+    }
+
+    void FindFriend()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(
+            rigidbody.position + Vector2.up * 0.2f,
+            moveDirection,
+            1.5f,
+            LayerMask.GetMask("NPC")
+        );
+
+        if (hit.collider != null)
+        {
+            if (hit.collider.TryGetComponent<NPC>(out var npc))
+            {
+                Debug.Log("Found NPC: " + hit.collider.name);
+                UIManager.Instance.DisplayNPCDialogue(npc);
+            }
+            else
+            {
+                Debug.LogWarning("Hit object doesn't have NPC component!");
+            }
+        }
     }
 }

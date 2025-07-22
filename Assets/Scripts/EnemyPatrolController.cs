@@ -18,8 +18,7 @@ public class EnemyPatrolController : MonoBehaviour
     public float maxAxisChangeTime = 8.0f;
 
     [Header("Collision Detection")]
-    public LayerMask environmentLayers = -1; // What layers count as environment
-    public float collisionCheckDistance = 0.6f; // How far ahead to check for collisions
+    public float collisionCheckDistance = 0.5f; // How far ahead to check for collisions
 
     private float timer;
     private float axisChangeTimer;
@@ -99,7 +98,12 @@ public class EnemyPatrolController : MonoBehaviour
         Vector2 rayStart = currentPosition + moveDirection * 0.1f;
 
         // Raycast to check for collision (exclude self)
-        RaycastHit2D hit = Physics2D.Raycast(rayStart, moveDirection, collisionCheckDistance - 0.1f, environmentLayers);
+        RaycastHit2D hit = Physics2D.Raycast(
+            rayStart,
+            moveDirection,
+            collisionCheckDistance,
+            LayerMask.GetMask("Environment", "Enemy", "Fixable")
+        );
 
         // Make sure we didn't hit ourselves
         if (hit.collider != null && hit.collider.gameObject != gameObject)
